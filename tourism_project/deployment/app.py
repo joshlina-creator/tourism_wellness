@@ -14,7 +14,7 @@ from huggingface_hub import hf_hub_download
 
 MODEL_LOCAL_PATH = "best_model.joblib"
 HF_MODEL_REPO = os.environ.get(
-    "HF_MODEL_REPO", "your-hf-username/tourism-wellness-package-model"
+    "HF_MODEL_REPO", "Joshlina153/tourism-wellness-package-model"
 )
 
 
