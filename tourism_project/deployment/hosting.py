@@ -19,20 +19,19 @@ def push_to_space():
     hf_token = os.environ.get("HF_TOKEN")
     if not hf_token:
         print(
-            "HF_TOKEN not found in environment. Skipping push to Hugging Face Spaces.\n"
-            "To host the app for real:\n"
-            "  1. Set HF_TOKEN (and HF_USERNAME) as environment variables locally, or as "
-            "GitHub secrets for the CI/CD workflow.\n"
-            "  2. Re-run this script; it will create a public Streamlit Space at "
-            f"https://huggingface.co/spaces/{SPACE_REPO_ID}"
+            "HF_TOKEN not found in environment. Skipping push to Hugging Face Spaces."
         )
         return
 
     api = HfApi(token=hf_token)
-      create_repo(
-       repo_id=SPACE_REPO_ID, repo_type="space", space_sdk="streamlit",
-       token=hf_token, exist_ok=True, private=False,
-   )
+    create_repo(
+        repo_id=SPACE_REPO_ID,
+        repo_type="space",
+        space_sdk="streamlit",
+        token=hf_token,
+        exist_ok=True,
+        private=False,
+    )
     api.upload_folder(folder_path=DEPLOY_DIR, repo_id=SPACE_REPO_ID, repo_type="space")
     print(f"App deployed at: https://huggingface.co/spaces/{SPACE_REPO_ID}")
 
