@@ -29,10 +29,10 @@ def push_to_space():
         return
 
     api = HfApi(token=hf_token)
-    create_repo(
-        repo_id=SPACE_REPO_ID, repo_type="space", space_sdk="docker",
-        token=hf_token, exist_ok=True, private=False,
-    )
+      create_repo(
+       repo_id=SPACE_REPO_ID, repo_type="space", space_sdk="streamlit",
+       token=hf_token, exist_ok=True, private=False,
+   )
     api.upload_folder(folder_path=DEPLOY_DIR, repo_id=SPACE_REPO_ID, repo_type="space")
     print(f"App deployed at: https://huggingface.co/spaces/{SPACE_REPO_ID}")
 
